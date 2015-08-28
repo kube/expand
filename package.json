@@ -1,0 +1,35 @@
+{
+  "name": "expand",
+  "version": "0.0.1",
+  "description": "Tab expander in Javascript",
+  "main": "./lib/expand.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kube/expand.git"
+  },
+  "keywords": [
+    "tab",
+    "expand",
+    "soft-tabs",
+    "hard-tabs",
+    "replace"
+  ],
+  "author": "Christophe Feijoo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kube/expand/issues"
+  },
+  "homepage": "https://github.com/kube/expand#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.1.3",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-typescript": "^2.8.0",
+    "mocha": "^2.2.5",
+    "run-sequence": "^1.1.2"
+  }
+}
