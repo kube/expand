@@ -4,4 +4,4 @@ node_js:
 before_install:
   - npm install -g gulp
   - npm install -g tsd
-repo_token: 57F6gXPSjX76gy8efUfLjoZ3q902YPGZB
+repo_token: OiLxcZ0oBmq0vdAudOZxTlm3KKTTV9VYz

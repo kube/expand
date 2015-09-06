@@ -4,6 +4,7 @@
   "description": "Tab expander in Javascript",
   "main": "./lib/expand.js",
   "scripts": {
+    "postinstall": "tsd reinstall -so",
     "test": "gulp test"
   },
   "repository": {
