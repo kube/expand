@@ -32,6 +32,11 @@ interface expanderStreamOptions extends stream.TransformOptions {
   tabSize: number
 }
 
+export function expandString(input:String, tabSize?: number): string {
+  var lines = input.split(/(?=\n)/g)
+  return lines.map(line => expandLine(line, tabSize)).join('')
+}
+
 export class expanderStream extends stream.Transform {
   private _lastLineData: string
 
@@ -44,11 +49,11 @@ export class expanderStream extends stream.Transform {
     if (this._lastLineData) {
       data = this._lastLineData + data
     }
-
-    var lines = data.split('\n')
-    lines.forEach(line => {
-      this.push(expandLine(line))
-    })
+    
+    // Positive lookahead regex delimiter to keep carriage return in line
+    var lines = data.split(/(?=\n)/g)
+    lines.forEach(line =>
+      this.push(expandLine(line)))
     done()
   }
 

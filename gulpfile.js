@@ -5,7 +5,9 @@ var gulp = require('gulp')
 var typescript = require('gulp-typescript')
 var sourcemaps = require('gulp-sourcemaps')
 var mocha = require('gulp-mocha')
+var istanbul = require('gulp-istanbul')
 var runSequence = require('run-sequence')
+var plumber = require('gulp-plumber')
 
 // Library Compilation
 
@@ -43,9 +45,18 @@ gulp.task('typescript-spec', function () {
 
 // Spec testing
 
-gulp.task('mocha', function () {
-  return gulp.src('./spec/dist/**/*.js')
-    .pipe(mocha())
+gulp.task('mocha', function (next) {
+  gulp.src(['./lib/*.js'])
+    .pipe(istanbul())
+    .pipe(istanbul.hookRequire())
+    .on('finish', function () {
+      gulp.src('./spec/dist/**/*.js')
+        .pipe(plumber())
+        .pipe(mocha())
+        .pipe(istanbul.writeReports())
+        .pipe(istanbul.enforceThresholds({ thresholds: { global: 75 } }))
+        .on('end', next);
+    })
 })
 
 gulp.task('watch', function () {
