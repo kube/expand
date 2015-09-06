@@ -4,4 +4,5 @@ node_js:
 before_install:
   - npm install -g gulp
   - npm install -g tsd
+after_success: ./node_modules/.bin/coveralls --verbose < coverage/lcov.info
 repo_token: OiLxcZ0oBmq0vdAudOZxTlm3KKTTV9VYz
